@@ -20,28 +20,35 @@
 
 ---
 
-## 1. Docker Hub Image (Câu 5)
+## 1. Docker Hub Images
+
+### Backend:
 - **Docker Hub Repository:** https://hub.docker.com/r/vanhuong28/backend
 - **Image URL / Tag:** `vanhuong28/backend:latest` (và `vanhuong28/backend:v1`)
 - **Image phụ (theo MSSV):** `vanhuong28/235007-backend:latest`
 
-### Lệnh chạy container backend:
-```bash
-# Kéo image từ Docker Hub
-docker pull vanhuong28/backend:latest
+### Frontend:
+- **Docker Hub Repository:** https://hub.docker.com/r/vanhuong28/frontend
+- **Image URL / Tag:** `vanhuong28/frontend:latest` (và `vanhuong28/frontend:v1`)
+- **Image phụ (theo MSSV):** `vanhuong28/235007-frontend:latest`
 
-# Khởi chạy container với biến môi trường
+### Lệnh chạy container:
+```bash
+# Backend
 docker run -d -p 5000:5000 \
   -e PORT=5000 \
   -e DB_NAME=235007_NguyenVanHuong \
   -e MONGODB_URI="<chuoi_ket_noi_mongodb_atlas>" \
   -e CORS_ORIGINS="http://localhost:5173,http://localhost:8080" \
   --name backend-app vanhuong28/backend:latest
+
+# Frontend
+docker run -d -p 8080:80 --name frontend-app vanhuong28/frontend:latest
 ```
 
 ---
 
-## 2. Triển khai trên Render (Câu 6 & Câu 7)
+## 2. Triển khai trên Render
 - **Frontend URL:** https://two35007-nguyenvanhuong.onrender.com
 - **Backend API URL:** https://backend-235007.onrender.com
 - **Health Check API:** https://backend-235007.onrender.com/health
