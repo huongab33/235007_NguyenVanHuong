@@ -12,7 +12,7 @@ const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:5173,http:
 
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.onrender.com')) return callback(null, true);
     const error = new Error('Nguon frontend khong duoc phep truy cap (CORS)');
     error.status = 403;
     return callback(error);
